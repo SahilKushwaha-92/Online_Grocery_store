@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cara - Shop</title>
+  <style>
+    /* Reset some default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      /* Two-color background mix */
+      background: linear-gradient(120deg, #f8d4aa 0%, #008080 100%);
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Navigation bar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e1e6f1;
+      padding: 2px 60px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    /* Logo */
+    .logo {
+      font-family: cursive, sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      cursor: default;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo span {
+      font-weight: normal;
+      font-size: 20px;
+      color: #9e98c9;
+      margin-left: 5px;
+      user-select: none;
+    }
+    .logo img {
+                height:65px; 
+                width:auto; 
+                align-items: center;
+            }
+
+    /* Hamburger Menu Button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      z-index: 1000;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+    }
+
+    .hamburger span {
+      width: 30px;
+      height: 3px;
+      background: #008080;
+      margin: 4px 0;
+      transition: all 0.3s ease;
+      border-radius: 3px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(9px, 9px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    /* Nav Links container */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    /* Nav Links */
+    ul.nav-links {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+      font-weight: 500;
+      font-size: 16px;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+
+    ul.nav-links li {
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    ul.nav-links li a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      padding: 0.5rem 0;
+    }
+
+    ul.nav-links li:hover,
+    ul.nav-links li a:hover {
+      color: #008080;
+    }
+
+    /* Active Link */
+    ul.nav-links li a.active {
+      color: #008080;
+      font-weight: 700;
+      border-bottom: 2.5px solid #008080;
+      padding-bottom: 5px;
+    }
+
+    /* Login Button */
+    .btn-login {
+      background-color: transparent;
+      border: 2px solid #008080;
+      padding: 6px 18px;
+      color: #008080;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .btn-login a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .btn-login:hover {
+      background-color: #008080;
+      color: white;
+      border-color: #006b6b;
+    }
+
+    .btn-login:hover a {
+      color: white;
+    }
+
+    #main {
+      /* subtle overlay so hero content reads well on gradient */
+      background: linear-gradient(180deg, rgba(255, 193, 193, 0.6), rgba(91, 236, 255, 0.25));
+      background-size: cover;
+      height: 90vh;
+      width: 100%;
+      background-position: top 25% right 0;
+      padding: 0 80px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    /* Main content */
+    main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 100px;
+      gap: 40px;
+      flex-grow: 1;
+    }
+
+    /* Left text content */
+    .text-content {
+      max-width: 550px;
+    }
+
+    .text-content p.trade-in {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .text-content h1 {
+      font-weight: 900;
+      font-size: 48px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .text-content h1 .highlight {
+      color: #008080;
+    }
+
+    .text-content p.sub-text {
+      font-weight: 400;
+      font-size: 14px;
+      color: #5a5a5a;
+      margin-bottom: 35px;
+    }
+
+    /* Shop now button */
+    .btn-shop {
+      background-color: #f8d4aa;
+      border: none;
+      padding: 10px 28px;
+      font-weight: 700;
+      font-size: 16px;
+      color: #008080;
+      cursor: pointer;
+      border-radius: 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-shop a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .btn-shop:hover {
+      background-color: #e1bc8b;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #e1e6f1;
+      padding: 20px 60px;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 900px) {
+      nav {
+        padding: 2px 30px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-right {
+        position: fixed;
+        left: -100%;
+        top: 50px;
+        flex-direction: column;
+        background: rgba(225, 230, 241, 0.98);
+        width: 100%;
+        text-align: center;
+        transition: left 0.3s ease;
+        padding: 2rem 0;
+        gap: 0;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        z-index: 999;
+      }
+
+      .nav-right.active {
+        left: 0;
+      }
+
+      ul.nav-links {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+      }
+
+      ul.nav-links li {
+        margin: 0.5rem 0;
+        width: 100%;
+      }
+
+      ul.nav-links li a {
+        font-size: 1.2rem;
+        padding: 1rem;
+        width: 100%;
+        display: block;
+      }
+
+      ul.nav-links li a:hover {
+        background: rgba(0, 128, 128, 0.1);
+      }
+
+      ul.nav-links li a.active {
+        border-bottom: none;
+        border-left: 4px solid #008080;
+      }
+
+      .btn-login {
+        margin-top: 1rem;
+        padding: 10px 30px;
+        font-size: 16px;
+      }
+
+      main {
+        flex-direction: column;
+        padding: 40px 30px;
+        min-height: auto;
+      }
+
+      .text-content {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .text-content h1 {
+        font-size: 36px;
+      }
+
+      footer {
+        padding: 15px 30px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        padding: 1px 20px;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+
+      .logo span {
+        font-size: 18px;
+      }
+    }
+
+    /* Hero image styles and responsive behavior */
+    .hero-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1 1 40%;
+      margin-left: 40px;
+    }
+
+    .hero-image img {
+      max-width: 500px;
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); */
+    }
+
+    /* Ensure main stays a row for medium+ sizes, and stacks only at <=480px */
+    @media (min-width: 481px) {
+      main {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      main {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 1px;
+        gap: 20px;
+      }
+      
+    }
+  </style>
+</head>
+
+<body>
+
+   <div id="Header"></div>
+  <!-- Navigation Bar
+  <nav>
+    <div class="logo">
+      <img src="Logo.png" alt="Store Logo">
+    </div>
+
+    <!-- Hamburger Menu Button -
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-right" id="navRight">
+      <ul class="nav-links">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="browse-products.html">Shop</a></li>
+        <!-- <li><a href="blog.html">Blog</a></li> -
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="btn-login">
+        <a href="login.html">Login</a>
+      </button>
+    </div>
+  </nav> -->
+
+  <!-- Main Content Section -->
+  <section id="main">
+    <main>
+      <div class="text-content">
+        <p class="trade-in">Trade-in-offer</p>
+        <h1>
+          Super value deals <br />
+          <span class="highlight">On all products</span>
+        </h1>
+        <p class="sub-text">save more with coupons &amp; up to 70% off!</p>
+        <button class="btn-shop">
+          <a href="login.html">Shop Now</a>
+        </button>
+      </div>
+      <div class="hero-image">
+        <img src="Big_phone_with_cart.png" alt="Featured product or banner">
+      </div>
+    </main>
+  </section>
+  <section>
+
+  </section>
+
+  <!-- Footer -->
+
+   <div id="Footer"></div>
+    <script>
+        // Dynamically load Header.html and then load Header.js so its scripts execute
+        fetch('Header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('Header').innerHTML = data;
+                // Inject the header script after HTML insertion so event listeners bind
+                const existing = document.querySelector('script[src="Header.js"]');
+                if (!existing) {
+                    const s = document.createElement('script');
+                    s.src = 'Header.js';
+                    s.defer = true;
+                    document.body.appendChild(s);
+                }
+            })
+            .catch(err => console.error('Failed to load Header:', err));
+    </script>
+</body>
+
+</html>

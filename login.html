@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ShopEase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            max-width: 500px;
+            width: 100%;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .login-header .icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .login-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .login-header p {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+
+        .login-form {
+            padding: 40px 30px;
+        }
+
+        .demo-credentials {
+            background: #e8f4fd;
+            border: 2px solid #b3d9f2;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .demo-credentials h4 {
+            color: #0066cc;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .demo-section {
+            margin-bottom: 10px;
+        }
+
+        .demo-section strong {
+            color: #003366;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .demo-credentials p {
+            color: #004080;
+            font-size: 0.85em;
+            margin: 3px 0;
+            padding-left: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #667eea;
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 1.2em;
+            user-select: none;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.9em;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+        }
+
+        .remember-me input[type="checkbox"] {
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            color: #999;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .signup-link {
+            text-align: center;
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .signup-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .back-home {
+            text-align: center;
+        }
+
+        .back-home a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-home a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 0.9em;
+        }
+
+        .success-message {
+            background: #efe;
+            color: #3c3;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 10px;
+            }
+
+            .login-header {
+                padding: 30px 20px;
+            }
+
+            .login-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="icon">🔐</div>
+            <h2>Login to ShopEase</h2>
+            <p>Enter your credentials to continue</p>
+        </div>
+
+        <div class="login-form">
+            <!-- Demo Credentials for both types -->
+            <div class="demo-credentials">
+                <h4>🔑 Demo Credentials</h4>
+                <div class="demo-section">
+                    <strong>Customer:</strong>
+                    <p>Email: customer@test.com | Password: customer123</p>
+                </div>
+                <div class="demo-section">
+                    <strong>Owner:</strong>
+                    <p>Email: owner@shopease.com | Password: owner123</p>
+                </div>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email, Mobile or Username</label>
+                    <input type="text" id="email" placeholder="Enter your email, mobile or username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <span class="toggle-password" onclick="togglePassword()">👁️</span>
+                    </div>
+                </div>
+
+                <div class="remember-forgot">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-password" onclick="forgotPassword(); return false;">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+
+            <div class="divider">OR</div>
+
+            <div class="signup-link">
+                Don't have an account? <a href="customer-signup.html">Sign Up as Customer</a>
+            </div>
+
+            <div class="back-home">
+                <a href="index.html">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.querySelector('.toggle-password');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.textContent = '👁️';
+            }
+        }
+
+        // Handle login - Auto-detect user type
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const identifier = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+
+            // Try Owner login first (demo)
+            if ((identifier === 'owner@shopease.com' || identifier === 'admin') && password === 'owner@1234') {
+                loginAsOwner({
+                    id: 'owner_001',
+                    name: 'Admin Owner',
+                    username: 'owner@shopease.com',
+                    email: 'owner@shopease.com',
+                    role: 'owner'
+                }, remember);
+                return;
+            }
+
+            // Try Customer login (demo)
+            if (identifier === 'customer@test.com' && password === 'customer123') {
+                loginAsCustomer({
+                    id: 'demo_customer',
+                    name: 'Demo Customer',
+                    email: 'customer@test.com',
+                    mobile: '9876543210',
+                    address: '123 Demo Street, Mumbai'
+                }, remember);
+                return;
+            }
+
+            // Check registered owners
+            let owners = JSON.parse(localStorage.getItem('owners')) || [];
+            const owner = owners.find(o =>
+                (o.username === identifier || o.email === identifier) && o.password === password
+            );
+
+            if (owner) {
+                loginAsOwner({
+                    id: owner.id,
+                    name: owner.name,
+                    username: owner.username,
+                    email: owner.email,
+                    role: 'owner'
+                }, remember);
+                return;
+            }
+
+            // Check registered customers
+            let customers = JSON.parse(localStorage.getItem('customers')) || [];
+            const customer = customers.find(c =>
+                (c.email === identifier || c.mobile === identifier) && c.password === password
+            );
+
+            if (customer) {
+                loginAsCustomer({
+                    id: customer.id,
+                    name: customer.name,
+                    email: customer.email,
+                    mobile: customer.mobile,
+                    address: customer.address
+                }, remember);
+                return;
+            }
+
+            // If no match found
+            showError('Invalid credentials. Check the demo credentials above or sign up.');
+        }
+
+        // Login as Customer
+        function loginAsCustomer(customerData, remember) {
+            localStorage.setItem('currentCustomer', JSON.stringify(customerData));
+
+            if (remember) {
+                localStorage.setItem('rememberCustomer', 'true');
+            }
+
+            showSuccess('✅ Welcome ' + customerData.name + '! Redirecting to products...');
+            setTimeout(() => {
+                window.location.href = 'products.html';
+            }, 1500);
+        }
+
+        // Login as Owner
+        function loginAsOwner(ownerData, remember) {
+            localStorage.setItem('currentOwner', JSON.stringify(ownerData));
+
+            if (remember) {
+                localStorage.setItem('rememberOwner', 'true');
+            }
+
+            showSuccess('✅ Welcome ' + ownerData.name + '! Redirecting to dashboard...');
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1500);
+        }
+
+        function forgotPassword() {
+            alert('Password Reset\n\nFor demo accounts, use the credentials shown above.\n\nFor registered accounts:\n• Customers: Contact support\n• Owners: Contact administrator at support@shopease.com');
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = '❌ ' + message;
+            errorDiv.style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+
+        // Check if user is already logged in
+        window.onload = function () {
+            const currentCustomer = localStorage.getItem('currentCustomer');
+            const rememberCustomer = localStorage.getItem('rememberCustomer');
+            const currentOwner = localStorage.getItem('currentOwner');
+            const rememberOwner = localStorage.getItem('rememberOwner');
+
+            // Auto-login if remembered
+            if (currentCustomer && rememberCustomer === 'true') {
+                window.location.href = 'products.html';
+            }
+
+            if (currentOwner && rememberOwner === 'true') {
+                window.location.href = 'dashboard.html';
+            }
+
+            // Initialize demo owner
+            initializeDemoOwner();
+        };
+
+        // Initialize demo owner if not exists
+        function initializeDemoOwner() {
+            let owners = JSON.parse(localStorage.getItem('owners')) || [];
+            const demoExists = owners.findIndex(o => o.username === 'owner@shopease.com');
+
+            const demoOwner = {
+                id: 'owner_001',
+                name: 'Admin Owner',
+                username: 'owner@shopease.com',
+                email: 'owner@shopease.com',
+                password: 'owner@1234',
+                role: 'owner',
+                createdAt: new Date().toISOString()
+            };
+
+            if (demoExists === -1) {
+                owners.push(demoOwner);
+            } else {
+                owners[demoExists] = demoOwner;
+            }
+
+            localStorage.setItem('owners', JSON.stringify(owners));
+        }
+    </script>
+</body>
+
+</html>

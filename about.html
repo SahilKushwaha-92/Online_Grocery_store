@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — Shop</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+             background: linear-gradient(180deg, rgba(255, 193, 193, 0.6), rgba(91, 236, 255, 0.25));
+        }
+        .about-card {
+            max-width: 960px;
+            margin: 28px auto;
+            padding: 20px
+        }
+
+        .about-hero {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 28px
+        }
+
+        .about-hero h1 {
+            margin: 0 0 12px;
+            font-size: 32px
+        }
+
+        .about-hero p {
+            color: var(--muted);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto
+        }
+
+        .about-section {
+            margin-bottom: 28px
+        }
+
+        .about-section h2 {
+            margin: 0 0 12px;
+            font-size: 20px;
+            color: var(--accent)
+        }
+
+        .about-section p {
+            line-height: 1.6;
+            color: #1f2937;
+            margin: 8px 0
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 12px
+        }
+
+        .value-card {
+            /* background: linear-gradient(180deg, #fff, #fbfdff); */
+             background: linear-gradient(180deg, rgba(71, 92, 247, 0.6), rgba(234, 39, 176, 0.25));
+            border: 1px solid #eef6ff;
+            padding: 16px;
+            border-radius: 10px;
+            text-align: center
+        }
+
+        .value-card h3 {
+            margin: 0 0 8px;
+            font-size: 16px;
+            color: var(--accent)
+        }
+
+        .value-card p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--muted)
+        }
+
+        .team-section {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 12px
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 12px
+        }
+
+        .team-member {
+            background: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #eef6ff
+        }
+
+        .team-member .avatar {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 24px
+        }
+
+        .team-member h4 {
+            margin: 0;
+            font-size: 14px
+        }
+
+        .team-member .role {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 4px
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 12px
+        }
+
+        .stat {
+            text-align: center;
+            padding: 12px;
+            background: #f8fbff;
+            border-radius: 8px
+        }
+
+        .stat .number {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent)
+        }
+
+        .stat .label {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 4px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="Header"></div>
+
+    <main class="container">
+        <section class="card about-card">
+            <div class="about-hero">
+                <h1>About Us</h1>
+                <p>We're committed to bringing quality products and exceptional service to your doorstep.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Our Story</h2>
+                <p>Founded in 2020, our e-commerce platform was built on a simple mission: to make shopping convenient,
+                    affordable, and enjoyable for everyone. What started as a small initiative has grown into a trusted
+                    marketplace serving thousands of customers.</p>
+                <p>We believe in the power of connection — between customers and quality products, and between sellers
+                    and their communities. Every item in our store is carefully curated to ensure the highest standards
+                    of quality and value.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Our Mission</h2>
+                <p>To provide a seamless shopping experience by offering a diverse range of high-quality products at
+                    competitive prices, backed by exceptional customer service and fast, reliable delivery.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Core Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h3>Quality</h3>
+                        <p>We stand behind every product we sell. Quality is non-negotiable.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Trust</h3>
+                        <p>Transparent pricing, secure transactions, and honest communication.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Innovation</h3>
+                        <p>Continuously improving our platform and service to serve you better.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Sustainability</h3>
+                        <p>Responsible practices for a better future.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>By The Numbers</h2>
+                <div class="stats-row">
+                    <div class="stat">
+                        <div class="number">50K+</div>
+                        <div class="label">Happy Customers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">5K+</div>
+                        <div class="label">Products</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">100+</div>
+                        <div class="label">Sellers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">24/7</div>
+                        <div class="label">Support</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Meet Our Team</h2>
+                <p>Our diverse team of passionate professionals is dedicated to making your shopping experience
+                    exceptional.</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="avatar">SK</div>
+                        <h4>Sarah Khan</h4>
+                        <div class="role">Founder & CEO</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="avatar">RP</div>
+                        <h4>Rajesh Patel</h4>
+                        <div class="role">CTO</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="avatar">AM</div>
+                        <h4>Aisha Mehta</h4>
+                        <div class="role">Head of Operations</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="avatar">VJ</div>
+                        <h4>Vikram Joshi</h4>
+                        <div class="role">Customer Success</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Why Choose Us?</h2>
+                <ul style="line-height: 1.8; color: #1f2937">
+                    <li><strong>Wide Selection:</strong> Thousands of products across multiple categories.</li>
+                    <li><strong>Best Prices:</strong> Competitive pricing with regular deals and discounts.</li>
+                    <li><strong>Fast Delivery:</strong> Quick and reliable shipping to your location.</li>
+                    <li><strong>Secure Shopping:</strong> Safe payment methods and data protection.</li>
+                    <li><strong>Easy Returns:</strong> Hassle-free return and exchange policy.</li>
+                    <li><strong>Expert Support:</strong> Dedicated customer support team ready to help.</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2>Get In Touch</h2>
+                <p>Have questions or suggestions? We'd love to hear from you!</p>
+                <p>
+                    <strong>Email:</strong> <a href="mailto:support@shopexample.com"
+                        style="color: var(--accent); text-decoration: none">support@shopexample.com</a><br>
+                    <strong>Phone:</strong> <a href="tel:+919876543210"
+                        style="color: var(--accent); text-decoration: none">+91 9876543210</a><br>
+                    <strong>Address:</strong> 123 Commerce Street, Mumbai, India 400001
+                </p>
+            </div>
+
+            <a class="back-link" href="../index.html">← Back to Home</a>
+        </section>
+    </main>
+    <div id="Footer"></div>
+    <script>
+        // Dynamically load Header.html and then load Header.js so its scripts execute
+        fetch('Header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('Header').innerHTML = data;
+                // Inject the header script after HTML insertion so event listeners bind
+                const existing = document.querySelector('script[src="Header.js"]');
+                if (!existing) {
+                    const s = document.createElement('script');
+                    s.src = 'Header.js';
+                    s.defer = true;
+                    document.body.appendChild(s);
+                }
+            })
+            .catch(err => console.error('Failed to load Header:', err));
+    </script>
+</body>
+
+</html>

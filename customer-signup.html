@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - ShopEase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .signup-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            max-width: 600px;
+            width: 100%;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .signup-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .signup-header .icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .signup-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .signup-header p {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+
+        .signup-form {
+            padding: 40px 30px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .required {
+            color: #ff4757;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #667eea;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 1.2em;
+            user-select: none;
+        }
+
+        .password-strength {
+            margin-top: 5px;
+            font-size: 0.85em;
+            display: none;
+        }
+
+        .password-strength.weak {
+            color: #ff4757;
+            display: block;
+        }
+
+        .password-strength.medium {
+            color: #ffa502;
+            display: block;
+        }
+
+        .password-strength.strong {
+            color: #2ecc71;
+            display: block;
+        }
+
+        .terms-checkbox {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .terms-checkbox input[type="checkbox"] {
+            margin-top: 4px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .terms-checkbox label {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .terms-checkbox a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .terms-checkbox a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .signup-btn:active {
+            transform: translateY(0);
+        }
+
+        .signup-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            color: #999;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .login-link {
+            text-align: center;
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .login-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .back-home {
+            text-align: center;
+        }
+
+        .back-home a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-home a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 0.9em;
+        }
+
+        .success-message {
+            background: #efe;
+            color: #3c3;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 0.9em;
+        }
+
+        .info-message {
+            background: #e8f4fd;
+            border-left: 4px solid #667eea;
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #004080;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .signup-container {
+                margin: 10px;
+            }
+
+            .signup-header {
+                padding: 30px 20px;
+            }
+
+            .signup-form {
+                padding: 30px 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-header">
+            <div class="icon">✨</div>
+            <h2>Create Account</h2>
+            <p>Join ShopEase and start shopping today!</p>
+        </div>
+
+        <div class="signup-form">
+            <div class="info-message">
+                📝 All fields marked with <span style="color: #ff4757;">*</span> are required
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+
+            <form id="signupForm" onsubmit="handleSignup(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number <span class="required">*</span></label>
+                        <input type="tel" id="mobile" placeholder="10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password <span class="required">*</span></label>
+                        <div class="password-container">
+                            <input type="password" id="password" placeholder="Create a password" minlength="6" required oninput="checkPasswordStrength()">
+                            <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
+                        </div>
+                        <div class="password-strength" id="passwordStrength"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                        <div class="password-container">
+                            <input type="password" id="confirmPassword" placeholder="Re-enter password" minlength="6" required>
+                            <span class="toggle-password" onclick="togglePassword('confirmPassword')">👁️</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="address">Address <span class="required">*</span></label>
+                        <textarea id="address" placeholder="Enter your complete address" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City <span class="required">*</span></label>
+                        <input type="text" id="city" placeholder="Enter your city" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pincode">Pincode <span class="required">*</span></label>
+                        <input type="text" id="pincode" placeholder="6-digit pincode" pattern="[0-9]{6}" maxlength="6" required>
+                    </div>
+                </div>
+
+                <div class="terms-checkbox">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">
+                        I agree to the <a href="#" onclick="showTerms(); return false;">Terms & Conditions</a> and <a href="#" onclick="showPrivacy(); return false;">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="signup-btn" id="signupBtn">Create Account</button>
+            </form>
+
+            <div class="divider">OR</div>
+
+            <div class="login-link">
+                Already have an account? <a href="login.html">Login here</a>
+            </div>
+
+            <div class="back-home">
+                <a href="index.html">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        function togglePassword(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const toggleIcon = passwordInput.nextElementSibling;
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.textContent = '👁️';
+            }
+        }
+
+        // Check password strength
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthDiv = document.getElementById('passwordStrength');
+            
+            if (password.length === 0) {
+                strengthDiv.style.display = 'none';
+                return;
+            }
+
+            let strength = 0;
+            
+            if (password.length >= 6) strength++;
+            if (password.length >= 8) strength++;
+            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^a-zA-Z0-9]/.test(password)) strength++;
+
+            strengthDiv.className = 'password-strength';
+            
+            if (strength <= 2) {
+                strengthDiv.className += ' weak';
+                strengthDiv.textContent = '⚠️ Weak password';
+            } else if (strength <= 3) {
+                strengthDiv.className += ' medium';
+                strengthDiv.textContent = '✓ Medium password';
+            } else {
+                strengthDiv.className += ' strong';
+                strengthDiv.textContent = '✓ Strong password';
+            }
+        }
+
+        // Handle signup form submission
+        function handleSignup(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const fullName = document.getElementById('fullName').value.trim();
+            const mobile = document.getElementById('mobile').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const address = document.getElementById('address').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const pincode = document.getElementById('pincode').value.trim();
+            const termsAccepted = document.getElementById('terms').checked;
+
+            // Validation
+            if (!termsAccepted) {
+                showError('Please accept the Terms & Conditions');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showError('Passwords do not match!');
+                return;
+            }
+
+            if (password.length < 6) {
+                showError('Password must be at least 6 characters long');
+                return;
+            }
+
+            if (mobile.length !== 10 || !/^[0-9]{10}$/.test(mobile)) {
+                showError('Please enter a valid 10-digit mobile number');
+                return;
+            }
+
+            if (pincode.length !== 6 || !/^[0-9]{6}$/.test(pincode)) {
+                showError('Please enter a valid 6-digit pincode');
+                return;
+            }
+
+            // Check if user already exists
+            let customers = JSON.parse(localStorage.getItem('customers')) || [];
+            
+            const existingEmail = customers.find(c => c.email === email);
+            if (existingEmail) {
+                showError('This email is already registered. Please login instead.');
+                return;
+            }
+
+            const existingMobile = customers.find(c => c.mobile === mobile);
+            if (existingMobile) {
+                showError('This mobile number is already registered. Please login instead.');
+                return;
+            }
+
+            // Create new customer
+            const newCustomer = {
+                id: 'CUST' + Date.now(),
+                name: fullName,
+                email: email,
+                mobile: mobile,
+                password: password,
+                address: `${address}, ${city} - ${pincode}`,
+                city: city,
+                pincode: pincode,
+                createdAt: new Date().toISOString()
+            };
+
+            // Save to customers array
+            customers.push(newCustomer);
+            localStorage.setItem('customers', JSON.stringify(customers));
+
+            // Auto-login the user
+            const customerData = {
+                id: newCustomer.id,
+                name: newCustomer.name,
+                email: newCustomer.email,
+                mobile: newCustomer.mobile,
+                address: newCustomer.address
+            };
+            localStorage.setItem('currentCustomer', JSON.stringify(customerData));
+
+            console.log('New customer registered:', newCustomer);
+            console.log('Total customers:', customers.length);
+
+            // Show success message
+            showSuccess('Account created successfully! Redirecting...');
+            
+            // Disable submit button
+            document.getElementById('signupBtn').disabled = true;
+
+            // Redirect to products page
+            setTimeout(() => {
+                window.location.href = 'products.html';
+            }, 2000);
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = '❌ ' + message;
+            errorDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+
+            // Scroll to top to show error
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = '✅ ' + message;
+            successDiv.style.display = 'block';
+
+            // Hide error if visible
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+
+        function showTerms() {
+            alert('Terms & Conditions\n\n1. You must be 18 years or older to register\n2. Provide accurate information\n3. Keep your password secure\n4. Comply with all applicable laws\n5. ShopEase reserves the right to suspend accounts\n\nBy using our service, you agree to these terms.');
+        }
+
+        function showPrivacy() {
+            alert('Privacy Policy\n\n1. We collect personal information for order processing\n2. Your data is stored securely\n3. We do not share your data with third parties\n4. You can request data deletion anytime\n5. We use cookies to improve experience\n\nYour privacy is important to us.');
+        }
+
+        // Auto-fill city from pincode (basic validation)
+        document.getElementById('pincode').addEventListener('input', function(e) {
+            const pincode = e.target.value;
+            if (pincode.length === 6) {
+                // You can add API call here to get city from pincode
+                console.log('Pincode entered:', pincode);
+            }
+        });
+
+        // Prevent spaces in mobile and pincode
+        document.getElementById('mobile').addEventListener('keypress', function(e) {
+            if (e.key === ' ') e.preventDefault();
+        });
+
+        document.getElementById('pincode').addEventListener('keypress', function(e) {
+            if (e.key === ' ') e.preventDefault();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      color: #111;
+      line-height: 1.6;
+      /* background-color: #fff; */
+       background: linear-gradient(180deg, rgba(255, 193, 193, 0.6), rgba(91, 236, 255, 0.25));
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header section with background image and overlay */
+    header {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color: white;
+      padding: 100px 20px 80px;
+      text-align: center;
+      position: relative;
+    }
+
+    header::after {
+      /* overlay */
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(36, 48, 74, 0.8);
+      z-index: 1;
+    }
+
+    header h1 {
+      position: relative;
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 0.4rem;
+      z-index: 2;
+      font-family: monospace, monospace;
+    }
+
+    header p {
+      position: relative;
+      font-weight: 600;
+      z-index: 2;
+      font-size: 1.1rem;
+    }
+
+    /* Main content container */
+    main {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 60px auto 80px;
+      padding: 0 20px;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    /* Left - contact info */
+    .contact-info {
+      flex: 1 1 400px;
+      max-width: 480px;
+    }
+
+    .contact-info small {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #666;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .contact-info h2 {
+      font-size: 1.7rem;
+      font-weight: 900;
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    /* Info list */
+    .info-list {
+      list-style: none;
+      color: #555;
+      font-weight: 400;
+      font-size: 1rem;
+      max-width: 360px;
+    }
+
+    .info-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 18px;
+      gap: 12px;
+    }
+
+    /* Icons: Using Unicode symbols */
+    .icon-location::before {
+      content: "📍";
+      font-size: 1.3rem;
+    }
+
+    .icon-email::before {
+      content: "✉️";
+      font-size: 1.3rem;
+    }
+
+    .icon-phone::before {
+      content: "📞";
+      font-size: 1.3rem;
+    }
+
+    .icon-clock::before {
+      content: "⏰";
+      font-size: 1.3rem;
+    }
+
+    /* Right - Map container */
+    .map-container {
+      flex: 1 1 480px;
+      min-width: 320px;
+      height: 300px;
+      box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .map-container iframe {
+      border: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column;
+        gap: 40px;
+        margin: 40px auto 60px;
+      }
+      .map-container {
+        height: 280px;
+        max-width: 100%;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div id="Header"></div> 
+  <header>
+    <h1>#let's_talk</h1>
+    <p>LEAVE A MESSAGE, We love to hear from you!</p>
+  </header>
+
+  <main>
+    <section class="contact-info">
+      <small>GET IN TOUCH</small>
+      <h2>Visit one of our agency locations or contact us today</h2>
+      <ul class="info-list">
+        <li><span class="icon-location"></span><strong>Head Office</strong> 56 Glassford Street Glassgow G1 1UL New York</li>
+        <li><span class="icon-email"></span>contact@example.com</li>
+        <li><span class="icon-phone"></span>+012 345 6789</li>
+        <li><span class="icon-clock"></span>Monday to Saturday: 9.00am to 5.00pm</li>
+      </ul>
+    </section>
+
+    <section class="map-container">
+      <!-- Modified smaller map -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3035.6183259276626!2d-3.691939984606933!3d40.45305707936222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228622c5f59cf%3A0x590a5f0a7c24a42e!2sBernab%C3%A9u!5e0!3m2!1sen!2ses!4v1695359093097!5m2!1sen!2ses"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Bernabéu Stadium Map"
+      ></iframe>
+    </section>
+  </main>
+  <script>
+  // Dynamically load Header.html
+  fetch('Header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('Header').innerHTML = data;
+    })
+    .catch(err => console.error('Failed to load Header:', err));
+</script>
+ <script>
+  // Dynamically load Header.html
+  fetch('Header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('Header').innerHTML = data;
+      
+      // Initialize hamburger AFTER header is loaded
+      initializeHamburger();
+    })
+    .catch(err => console.error('Failed to load Header:', err));
+
+  function initializeHamburger() {
+    const hamburger = document.getElementById('hamburger');
+    const navRight = document.getElementById('navRight');
+
+    if (!hamburger || !navRight) return;
+
+    // Toggle menu on hamburger click
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      hamburger.classList.toggle('active');
+      navRight.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links li a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navRight.classList.remove('active');
+      });
+    });
+
+    // Close menu when clicking on login button
+    const loginBtn = document.querySelector('.btn-login');
+    if (loginBtn) {
+      loginBtn.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navRight.classList.remove('active');
+      });
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navRight.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navRight.classList.remove('active');
+      }
+    });
+  }
+</script>
+</body>
+</html>
